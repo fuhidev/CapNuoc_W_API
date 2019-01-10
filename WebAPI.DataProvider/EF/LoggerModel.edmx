@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LoggerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoggerDMA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDMA" Type="varchar" MaxLength="50" />
+          <Property Name="TenDMA" Type="nvarchar" MaxLength="150" />
+          <Property Name="SiteID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ChoLonLogger.dbo.t_Channel_Configurations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="t_Channel_Configurations">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="ChannelId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+          <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Pressure1" Type="bit" />
+          <Property Name="Pressure2" Type="bit" />
+          <Property Name="ForwardFlow" Type="bit" />
+          <Property Name="ReverseFlow" Type="bit" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="LastValue" Type="float" />
+          <Property Name="IndexTimeStamp" Type="datetime" />
+          <Property Name="LastIndex" Type="float" />
+        </EntityType>
+        <Function Name="ApLucChiTietDMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DMA" Type="varchar" Mode="In" />
+          <Parameter Name="TuNgay" Type="varchar" Mode="In" />
+          <Parameter Name="DenNgay" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LuuLuongChiTietDMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DMA" Type="varchar" Mode="In" />
+          <Parameter Name="TuNgay" Type="varchar" Mode="In" />
+          <Parameter Name="DenNgay" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SanLuongDMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DMA" Type="varchar" Mode="In" />
+          <Parameter Name="TuNgay" Type="varchar" Mode="In" />
+          <Parameter Name="DenNgay" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TongSanLuongDMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="LoggerModelStoreContainer">
+          <EntitySet Name="LoggerDMA" EntityType="Self.LoggerDMA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [t_Channel_Configurations].[ChannelId] AS [ChannelId], 
+    [t_Channel_Configurations].[LoggerId] AS [LoggerId], 
+    [t_Channel_Configurations].[ChannelName] AS [ChannelName], 
+    [t_Channel_Configurations].[Unit] AS [Unit], 
+    [t_Channel_Configurations].[Description] AS [Description], 
+    [t_Channel_Configurations].[Pressure1] AS [Pressure1], 
+    [t_Channel_Configurations].[Pressure2] AS [Pressure2], 
+    [t_Channel_Configurations].[ForwardFlow] AS [ForwardFlow], 
+    [t_Channel_Configurations].[ReverseFlow] AS [ReverseFlow], 
+    [t_Channel_Configurations].[TimeStamp] AS [TimeStamp], 
+    [t_Channel_Configurations].[LastValue] AS [LastValue], 
+    [t_Channel_Configurations].[IndexTimeStamp] AS [IndexTimeStamp], 
+    [t_Channel_Configurations].[LastIndex] AS [LastIndex]
+    FROM [dbo].[t_Channel_Configurations] AS [t_Channel_Configurations]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoggerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LoggerDMA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TenDMA" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SiteID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_Channel_Configurations">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="ChannelId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoggerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Pressure1" Type="Boolean" />
+          <Property Name="Pressure2" Type="Boolean" />
+          <Property Name="ForwardFlow" Type="Boolean" />
+          <Property Name="ReverseFlow" Type="Boolean" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="LastValue" Type="Double" />
+          <Property Name="IndexTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="LastIndex" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="LoggerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoggerDMAs" EntityType="Self.LoggerDMA" />
+          <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" />
+          <FunctionImport Name="ApLucChiTietDMA" ReturnType="Collection(LoggerModel.ApLucChiTietDMA_Result)">
+            <Parameter Name="DMA" Mode="In" Type="String" />
+            <Parameter Name="TuNgay" Mode="In" Type="String" />
+            <Parameter Name="DenNgay" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LuuLuongChiTietDMA" ReturnType="Collection(LoggerModel.LuuLuongChiTietDMA_Result)">
+            <Parameter Name="DMA" Mode="In" Type="String" />
+            <Parameter Name="TuNgay" Mode="In" Type="String" />
+            <Parameter Name="DenNgay" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SanLuongDMA" ReturnType="Collection(Double)">
+            <Parameter Name="DMA" Mode="In" Type="String" />
+            <Parameter Name="TuNgay" Mode="In" Type="String" />
+            <Parameter Name="DenNgay" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TongSanLuongDMA" />
+        </EntityContainer>
+        <ComplexType Name="ApLucChiTietDMA_Result">
+          <Property Type="Double" Name="GiaTri" Nullable="true" />
+          <Property Type="DateTime" Name="ThoiGian" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="LuuLuongChiTietDMA_Result">
+          <Property Type="Double" Name="GiaTri" Nullable="true" />
+          <Property Type="DateTime" Name="ThoiGian" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoggerModelStoreContainer" CdmEntityContainer="LoggerEntities">
+          <EntitySetMapping Name="LoggerDMAs">
+            <EntityTypeMapping TypeName="LoggerModel.LoggerDMA">
+              <MappingFragment StoreEntitySet="LoggerDMA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MaDMA" ColumnName="MaDMA" />
+                <ScalarProperty Name="TenDMA" ColumnName="TenDMA" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Channel_Configurations">
+            <EntityTypeMapping TypeName="LoggerModel.t_Channel_Configurations">
+              <MappingFragment StoreEntitySet="t_Channel_Configurations">
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+                <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Pressure1" ColumnName="Pressure1" />
+                <ScalarProperty Name="Pressure2" ColumnName="Pressure2" />
+                <ScalarProperty Name="ForwardFlow" ColumnName="ForwardFlow" />
+                <ScalarProperty Name="ReverseFlow" ColumnName="ReverseFlow" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="LastValue" ColumnName="LastValue" />
+                <ScalarProperty Name="IndexTimeStamp" ColumnName="IndexTimeStamp" />
+                <ScalarProperty Name="LastIndex" ColumnName="LastIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ApLucChiTietDMA" FunctionName="LoggerModel.Store.ApLucChiTietDMA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LoggerModel.ApLucChiTietDMA_Result">
+                <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LuuLuongChiTietDMA" FunctionName="LoggerModel.Store.LuuLuongChiTietDMA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LoggerModel.LuuLuongChiTietDMA_Result">
+                <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SanLuongDMA" FunctionName="LoggerModel.Store.SanLuongDMA" />
+          <FunctionImportMapping FunctionImportName="TongSanLuongDMA" FunctionName="LoggerModel.Store.TongSanLuongDMA" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="515c6dd1ec4948ddbacb566f45a3c4b4" Name="Diagram1">
+        <EntityTypeShape EntityType="SystemModel.SYS_Account" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Capability" Width="1.5" PointX="7.75" PointY="10.5" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Capability_Account" Width="1.5" PointX="11" PointY="8.5" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Capability_Role" Width="1.5" PointX="11" PointY="5.75" />
+        <EntityTypeShape EntityType="SystemModel.SYS_GroupLayer" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="SystemModel.SYS_GroupRole" Width="1.5" PointX="1.5" PointY="1.625" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Layer" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Layer_Account" Width="1.5" PointX="8.25" PointY="4.875" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Layer_Role" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Logger_Capability" Width="1.5" PointX="8.25" PointY="1.375" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Logger_Layer" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Role" Width="1.5" PointX="3.75" PointY="1.25" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Account_SYS_Role" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Capability_Account_SYS_Capability_Account" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Layer_Account_SYS_Account" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Logger_Capability_SYS_Account" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Capability_Account_SYS_Capability" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Capability_Role_SYS_Capability" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Capability_Role_SYS_Role" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Layer_SYS_GroupLayer" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Role_SYS_GroupRole" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Layer_Account_SYS_Layer" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Layer_Role_SYS_Layer" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Layer_SYS_Layer" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Logger_Layer_SYS_Layer" />
+        <AssociationConnector Association="SystemModel.FK_SYS_Layer_Role_SYS_Role" />
+        <EntityTypeShape EntityType="SystemModel.SYS_Version" Width="1.5" PointX="0.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
