@@ -7,12 +7,13 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.DataProvider;
 using WebAPI.DataProvider.EF;
+using WebAPI.DataProvider.Models;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("Account")]
     public class AccountController : ApiController
     {
         private AccountDB context = new AccountDB();
@@ -78,7 +79,34 @@ namespace WebAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
             }
         }
+        // GET: api/Account/5
+        [ResponseType(typeof(LayerInfo))]
+        [Route("LayerInfo")]
+        [HttpGet]
+        public HttpResponseMessage LayerInfo()
+        {
+            try
+            {
+                var user = User.Identity.Name;
+                if (user != null)
+                {
 
+                    var result = context.LayerInfos(new SYS_Account
+                    {
+                        Username = user
+                    });
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.Unauthorized, "Không tìm thấy định danh");
+                }
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+        }
         // GET: api/Account/5
         [ResponseType(typeof(Profile))]
         [Route("IsAccess/{idApp}")]

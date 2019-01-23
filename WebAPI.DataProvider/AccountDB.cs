@@ -56,8 +56,9 @@ namespace WebAPI.DataProvider
                 using (var context = new SystemEntities())
                 {
                     var password = Helper.MD5.CryptoPassword(account.Password);
-                    var sysAccount = context.SYS_Account.
-                        FirstOrDefault(
+                    var sysAccount = context.SYS_Account
+                        .Include("SYS_Capability_Account")
+                        .FirstOrDefault(
                         f =>
                         f.Username.Equals(account.Username, StringComparison.OrdinalIgnoreCase)
                         && f.Password.Equals(password));

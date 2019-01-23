@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Net.Http;
@@ -12,48 +13,18 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [RoutePrefix("Login")]
     public class LoginController : ApiController
     {
         private AccountDB provider = new AccountDB();
-
-        public HttpResponseMessage Get(string Username, string Password)
-        {
-            return this.Authenticate(new LoginRequest
-            {
-                Username = Username,
-                Password = Password
-            });
-        }
-
         [HttpPost]
         public HttpResponseMessage Authenticate([FromBody] LoginRequest login)
         {
-            var loginResponse = new LoginResponse { };
-            SYS_Account loginRequest = new SYS_Account
-            {
-                Username = login.Username.ToLower(),
-                Password = login.Password
-            };
-
-            bool isUsernamePasswordValid = false;
-
-            if (login != null)
-            {
-                try
-                {
-                    isUsernamePasswordValid = provider.IsValid(loginRequest) != null;
-                }
-                catch (Exception e)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
-                }
-            }
-
             // if credentials are valid
-            if (isUsernamePasswordValid)
+            if (this.Login(login.Username, login.Password) != null)
             {
-                var tokenHandler = new TokenValidationHandler();
-                string token = tokenHandler.CreateToken(loginRequest.Username);
+                var tokenValidator = new TokenValidationHandler();
+                string token = tokenValidator.CreateToken(login.Username);
                 //return the token
                 return Request.CreateResponse(HttpStatusCode.OK, token);
             }
@@ -63,21 +34,44 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("api/Login/profile")]
-        [ResponseType(typeof(SYS_Account))]
-        public HttpResponseMessage Profile()
+
+        [HttpPost]
+        [Route("WithUser")]
+        public HttpResponseMessage WithUser([FromBody] LoginRequest login)
         {
-            try
+            var baseAccount = this.Login(login.Username, login.Password);
+
+            // if credentials are valid
+            if (baseAccount != null)
             {
-                var user = User.Identity;
-                var result = this.provider.Get(user.Name);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
+                var tokenValidator = new TokenValidationHandler();
+                string token = tokenValidator.CreateToken(login.Username);
+                var capabilities = new List<string>();
+                if (baseAccount.SYS_Capability_Account != null && baseAccount.SYS_Capability_Account.Count > 0)
+                {
+                    foreach (var cap in baseAccount.SYS_Capability_Account)
+                    {
+                        capabilities.Add(cap.Capability);
+                    }
+                }
+                //return the token
+                return Request.CreateResponse(HttpStatusCode.OK, new
+                {
+                    username = baseAccount.Username,
+                    displayname = baseAccount.DisplayName,
+                    token = token,
+                    capabilities = capabilities
+                });
             }
-            catch (Exception e)
+            else
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
+                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Tài khoản hoặc mật khẩu không đúng");
             }
+        }
+
+        private SYS_Account Login(string username, string password)
+        {
+            return provider.IsValid(new SYS_Account { Username = username, Password = password });
         }
     }
 }
