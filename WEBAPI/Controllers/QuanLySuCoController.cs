@@ -24,38 +24,6 @@ namespace WebAPI.Controllers
     {
         private SuCoDB context = new SuCoDB();
 
-        [Route("LayMaSuCo/{doiQuanLy}")]
-        [HttpGet]
-        [AllowAnonymous]
-        public HttpResponseMessage LayMaSuCo(string doiQuanLy)
-        {
-            try
-            {
-                var result = this.context.GenerateIDSuCo(doiQuanLy);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
-            }
-        }
-
-        [Route("XoaHoSoVatTu")]
-        [HttpPost]
-        public HttpResponseMessage Delete(string idSuCo, string maVatTu)
-        {
-            try
-            {
-                var context = new HoSoVatTuSuCoDB();
-                var result = context.Delete(idSuCo, maVatTu);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
-            }
-        }
-
         [Route("inphieucongtac")]
         [AllowAnonymous]
         [HttpGet]
@@ -175,21 +143,6 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Route("TiepNhanSuCo/{objectId}")]
-        [ResponseType(typeof(bool))]
-        [HttpPost]
-        public HttpResponseMessage TiepNhanSuCo(int objectId)
-        {
-            try
-            {
-                var result = this.context.TiepNhanSuCo(objectId);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
-            }
-        }
 
         [Route("HintNhomKhacPhuc/{nhomKhacPhuc}")]
         [ResponseType(typeof(string))]
