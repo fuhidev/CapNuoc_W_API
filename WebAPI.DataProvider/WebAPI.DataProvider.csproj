@@ -62,9 +62,6 @@
     <Compile Include="EF\ApLucChiTietDMA_Result.cs">
       <DependentUpon>LoggerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\DMA.cs">
-      <DependentUpon>GISModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EF\DocSoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,9 +76,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DocSoModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EF\DONGHOKHACHHANG.cs">
-      <DependentUpon>GISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\GISModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -181,9 +175,6 @@
     </Compile>
     <Compile Include="EF\SYS_Version.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\TBKHACHHANGMATNUOC.cs">
-      <DependentUpon>GISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\t_Channel_Configurations.cs">
       <DependentUpon>LoggerModel.tt</DependentUpon>

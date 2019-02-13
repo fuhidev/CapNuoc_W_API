@@ -232,17 +232,20 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="DotNet\proxy.ashx" />
-    <Content Include="DotNet\proxy.config" />
-    <None Include="DotNet\proxy.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="DotNet\Web.config" />
     <None Include="Properties\PublishProfiles\binhphuoc_api_publish.pubxml" />
     <None Include="Properties\PublishProfiles\cholon_api.pubxml" />
     <None Include="Properties\PublishProfiles\cholon_folder.pubxml" />
     <Content Include="Resources\SuCo\phieucongtac.xlsx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Proxy\proxy.ashx" />
+    <Content Include="Proxy\proxy.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Proxy\proxy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Proxy\README.md" />
+    <Content Include="Proxy\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

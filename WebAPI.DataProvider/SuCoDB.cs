@@ -22,59 +22,6 @@ namespace WebAPI.DataProvider
         /// </summary>
         /// <param name="objectId">Objectid của đối tượng sự cố</param>
         /// <returns>IDSuCo</returns>
-        public string TiepNhanSuCo(int objectId)
-        {
-            using (var context = new GISEntities())
-            {
-                SUCO model = context.SUCOes.FirstOrDefault(f => f.OBJECTID == objectId);
-
-                // nếu sự cố khác trạng thái hoàn thành thì không cho cập nhật
-                if (model.TrangThai.HasValue && model.TrangThai.Value == (short)SuCo.TrangThai.HoanThanh)
-                {
-                    throw new Exception("Sự cố có trạng thái không phù hợp để thực hiện thao tác này");
-                }
-                // cập nhật idsuco
-                var sql = Helper.Query(@"declare @geometry geometry
-                set @geometry = (select top 1 Shape from sde.SUCO where OBJECTID = @p0) 
-
-                DECLARE @hanhChinh TABLE(
-                    MaPhuong varchar(10),
-                    MaQuan varchar(10)
-                );
-
-                INSERT INTO @hanhChinh 
-                select top 1 MaPhuong = IDHanhChinh,MaQuan = MaHuyen FROM sde.HANHCHINH a where a.SHAPE.STContains(@geometry) = 1 
-
-                DECLARE @IDSuCo varchar(20) 
-                DECLARE @MaQuan varchar(20)
-                
-                SET @IDSuCo = (CASE WHEN (SELECT MaQuan FROM @hanhChinh) = '777' THEN 'PCN2' ELSE 'PCN1' END) + '/T'+CONVERT(VARCHAR(2),MONTH(GETDATE()))+'/'+CONVERT(VARCHAR(4),YEAR(GETDATE()))+'/' 
-
-                SET @IDSuCo = (SELECT @IDSuCo+ISNULL((Select top 1 FORMAT(CONVERT(int,REVERSE(SUBSTRING(REVERSE(IDSuCo),1,4))) + 1,'0000') from sde.SuCo where IDSuCo LIKE @IDSuCo+'%' order by IDSuCo desc),'0001')) 
-
-                update sde.SUCO set 
-                IDSuCo = @IDSuCo,
-                TrangThai = 0,
-                MaPhuong = (SELECT MaPhuong FROM @hanhChinh),
-                MaQuan = (SELECT MaQuan FROM @hanhChinh),
-                MaDMA = ((select top 1 MADMA FROM sde.DMA a where a.SHAPE.STContains(@geometry) = 1)),
-                DoiQuanLy = CASE WHEN (SELECT MaQuan FROM @hanhChinh) = '777' THEN 'QLCN2' ELSE 'QLCN1' END,
-                TGPhanAnh = GETUTCDATE() 
-                WHERE OBJECTID = @p0");
-
-                var result = context.Database.ExecuteSqlCommand(sql, objectId);
-                if (result > 0)
-                {
-                    return context.Database.SqlQuery<string>("SELECT IDSuCo FROM sde.SuCo WHERE OBJECTID = @p0", objectId).FirstOrDefault();
-                }
-                else
-                {
-                    context.Database.ExecuteSqlCommand("DELETE FROM SDE.SuCo WHERE OBJECTID = @p0", objectId);
-                    throw new Exception("Có lỗi xảy ra trong quá trình thực hiện");
-                }
-            }
-        }
-
         public String HintNhomKhacPhuc(string pNhomKhacPhuc)
         {
             using (var context = new GISEntities())
@@ -166,47 +113,6 @@ namespace WebAPI.DataProvider
             throw new NotImplementedException();
         }
 
-        public string GenerateIDSuCo(string doiQuanLy = "QLCN1")
-        {
-
-            try
-            {
-                using (var context = new GISEntities())
-                {
-                    var now = DateTime.Now;
-                    string day = String.Format("{0}/T{1}/{2}/",
-                        doiQuanLy.ToLower().Replace("qlcn", "PCN"),
-                        now.Month, now.Year);
-
-                    string query = "Select top 1 IDSuCo from sde.SuCo where IDSuCo LIKE '" + day + "%' order by IDSuCo desc";
-
-                    var idSuco = context.Database.SqlQuery<string>(query).FirstOrDefault();
-
-                    if (String.IsNullOrEmpty(idSuco))
-                        return day + "0001";
-                    else
-                    {
-                        string id = idSuco;
-                        string[] array = id.Split('/');
-                        if (array.Count() == 4)
-                        {
-                            var stt = array[3];
-                            return day + ((int.Parse(stt) + 1).ToString().PadLeft(4, '0'));
-                        }
-                        else
-                        {
-                            return day + "0001";
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-        }
-
         public SUCO Get(string id)
         {
             using (var context = new GISEntities())
@@ -265,7 +171,6 @@ namespace WebAPI.DataProvider
                         var query = String.Format(@"
                         INSERT INTO SDE.HOSOVATTUSUCO 
                         SELECT 
-	                        OBJECTID = ISNULL(MAX(OBJECTID)+1,1) 
 	                        ,IDSuCo = @idSuCo
 	                        ,SoLuong = @soLuong
 	                        ,MaVatTu = @maVatTu
@@ -304,7 +209,7 @@ namespace WebAPI.DataProvider
             {
                 using (var context = new GISEntities())
                 {
-                    var model = context.HOSOVATTUSUCOes.FirstOrDefault(f => f.OBJECTID.Equals(id));
+                    var model = context.HOSOVATTUSUCOes.FirstOrDefault(f => f.RID.Equals(id));
                     if (model != null)
                     {
                         context.HOSOVATTUSUCOes.Remove(model);
@@ -348,7 +253,7 @@ namespace WebAPI.DataProvider
                 using (var context = new GISEntities())
                 {
                     context.Configuration.LazyLoadingEnabled = false;
-                    return context.HOSOVATTUSUCOes.FirstOrDefault(f => f.OBJECTID.Equals(id));
+                    return context.HOSOVATTUSUCOes.FirstOrDefault(f => f.RID.Equals(id));
                 }
             }
             catch (Exception e)
@@ -391,33 +296,7 @@ namespace WebAPI.DataProvider
 
         public bool Update(int id, HOSOVATTUSUCO model)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException();
-            }
-            try
-            {
-                using (var context = new GISEntities())
-                {
-                    var baseModel = context.HOSOVATTUSUCOes.FirstOrDefault(f => f.OBJECTID.Equals(id));
-                    if (baseModel == null)
-                    {
-                        throw new NullReferenceException("Không tìm thấy đối tượng trong cơ sở dữ liệu");
-                    }
-                    else
-                    {
-                        model.OBJECTID = id;
-                        context.Entry(baseModel).CurrentValues.SetValues(model);
-                        //context.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                        //context.SYS_Layer.Attach(model);
-                        return context.SaveChanges() > 0;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            throw new NotImplementedException();
         }
 
         public bool Update(string idSuCo, string maVatTu, int soLuong)
@@ -495,6 +374,6 @@ public class VatTuSuCo
 {
     public string MaVatTu { get; set; }
     public string TenVatTu { get; set; }
-    public decimal SoLuong { get; set; }
+    public decimal? SoLuong { get; set; }
     public string DonViTinh { get; set; }
 }

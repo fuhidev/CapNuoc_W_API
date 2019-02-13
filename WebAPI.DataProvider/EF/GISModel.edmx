@@ -5,138 +5,27 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="DMA">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="int" Nullable="false" />
-          <Property Name="MADMA" Type="nvarchar" MaxLength="20" />
-          <Property Name="TENDMA" Type="nvarchar" MaxLength="100" />
-          <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
-          <Property Name="SHAPE" Type="geometry" />
-          <Property Name="TiLeThatThoat" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="Nam" Type="nvarchar" MaxLength="4" />
-          <Property Name="Ky" Type="nvarchar" MaxLength="2" />
-        </EntityType>
-        <EntityType Name="DONGHOKHACHHANG">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="int" Nullable="false" />
-          <Property Name="TIEUCHUAN" Type="smallint" />
-          <Property Name="NAMSANXUAT" Type="int" />
-          <Property Name="SOTHANDONGHO" Type="int" />
-          <Property Name="VITRILAPDAT" Type="nvarchar" MaxLength="255" />
-          <Property Name="TINHTRANG" Type="smallint" />
-          <Property Name="APLUC" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="DONVITHICONG" Type="nvarchar" MaxLength="200" />
-          <Property Name="DONVITHIETKE" Type="nvarchar" MaxLength="200" />
-          <Property Name="DBDONGHONUOC" Type="nvarchar" MaxLength="11" />
-          <Property Name="TENTHUEBAO" Type="nvarchar" MaxLength="100" />
-          <Property Name="SONHA" Type="nvarchar" MaxLength="100" />
-          <Property Name="MADUONG" Type="nvarchar" MaxLength="10" />
-          <Property Name="MAPHUONG" Type="nvarchar" MaxLength="8" />
-          <Property Name="MAQUAN" Type="nvarchar" MaxLength="5" />
-          <Property Name="GHICHU" Type="nvarchar" MaxLength="255" />
-          <Property Name="CODONGHO" Type="smallint" />
-          <Property Name="SOHOPDONG" Type="nvarchar" MaxLength="100" />
-          <Property Name="MUCDICHSUDUNG" Type="smallint" />
-          <Property Name="SONGUOISUDUNG" Type="int" />
-          <Property Name="MASOCHI" Type="nvarchar" MaxLength="20" />
-          <Property Name="SODIENTHOAI" Type="nvarchar" MaxLength="50" />
-          <Property Name="SONHACU" Type="nvarchar" MaxLength="50" />
-          <Property Name="MASOCHIMATSO" Type="nvarchar" MaxLength="50" />
-          <Property Name="CHIKHOAGOC" Type="nvarchar" MaxLength="50" />
-          <Property Name="SOCNKIEMDINH" Type="nvarchar" MaxLength="50" />
-          <Property Name="TINHTRANGQLDHN" Type="smallint" />
-          <Property Name="TINHTRANGTHUNGANDHN" Type="smallint" />
-          <Property Name="TINHTRANGTUBODHN" Type="smallint" />
-          <Property Name="SOHOKHAU" Type="nvarchar" MaxLength="50" />
-          <Property Name="TENTHUEBAOCU" Type="nvarchar" MaxLength="50" />
-          <Property Name="NGAYBAMCHI" Type="nvarchar" MaxLength="20" />
-          <Property Name="LYDOBAMCHI" Type="nvarchar" MaxLength="200" />
-          <Property Name="SOLANTHAY" Type="nvarchar" MaxLength="200" />
-          <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="50" />
-          <Property Name="CAPCHINHXAC" Type="smallint" />
-          <Property Name="NGAYLAPDAT" Type="datetime2" Precision="7" />
-          <Property Name="NGAYKIEMDINH" Type="datetime2" Precision="7" />
-          <Property Name="NHAKIEMDINH" Type="smallint" />
-          <Property Name="DINHMUCSUDUNG" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="NGAYTHAYMOI" Type="datetime2" Precision="7" />
-          <Property Name="THOIHANSUDUNG" Type="int" />
-          <Property Name="LOAIDONGHO" Type="smallint" />
-          <Property Name="HIEUDONGHO" Type="smallint" />
-          <Property Name="NGUOICAPNHAT" Type="nvarchar" MaxLength="50" />
-          <Property Name="NGAYCAPNHAT" Type="datetime2" Precision="7" />
-          <Property Name="MADMA" Type="nvarchar" MaxLength="20" />
-          <Property Name="MADMZ" Type="nvarchar" MaxLength="20" />
-          <Property Name="MAVAN" Type="nvarchar" MaxLength="20" />
-          <Property Name="TINHTRANGVAN" Type="smallint" />
-          <Property Name="COCHIAKHOA" Type="nvarchar" MaxLength="20" />
-          <Property Name="GHICHUVANKH" Type="nvarchar" MaxLength="100" />
-          <Property Name="KHUPHO" Type="nvarchar" MaxLength="50" />
-          <Property Name="SOHOSO" Type="nvarchar" MaxLength="20" />
-          <Property Name="LOAIVAN" Type="smallint" />
-          <Property Name="TENDUONG" Type="nvarchar" MaxLength="100" />
-          <Property Name="LOAIKHACHHANG" Type="smallint" />
-          <Property Name="LOAIMATSO" Type="smallint" />
-          <Property Name="GIABIEU" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="NGAYDOCSO" Type="datetime2" Precision="7" />
-          <Property Name="MALOTRINH" Type="nvarchar" MaxLength="50" />
-          <Property Name="CHUKYDOCSO" Type="nvarchar" MaxLength="50" />
-          <Property Name="SOCHUNGMINH" Type="nvarchar" MaxLength="20" />
-          <Property Name="TINHTRANGKYTHUAT" Type="smallint" />
-          <Property Name="VITRI" Type="smallint" />
-          <Property Name="ThongTinSuaChua" Type="nvarchar" MaxLength="200" />
-          <Property Name="GHICHUTHONGTIN" Type="nvarchar" MaxLength="200" />
-          <Property Name="IDTHUA" Type="nvarchar" MaxLength="20" />
-          <Property Name="TINHTRANGDH" Type="smallint" />
-          <Property Name="CSTTThangGanNhat" Type="nvarchar" MaxLength="20" />
-          <Property Name="NHANVIENTHIETKE" Type="nvarchar" MaxLength="50" />
-          <Property Name="NHANVIENBAMCHI" Type="nvarchar" MaxLength="50" />
-          <Property Name="TINHTRANGVIPHAM" Type="smallint" />
-          <Property Name="TTRoRiTrenDHN" Type="smallint" />
-          <Property Name="DacDiemRoRi" Type="nvarchar" MaxLength="100" />
-          <Property Name="TinhTrangRoRi" Type="smallint" />
-          <Property Name="SLTieuThuTB" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="TINHTRANGSUDUNG" Type="smallint" />
-          <Property Name="DOSAU" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="COONGNGANH" Type="smallint" />
-          <Property Name="VATLIEU" Type="smallint" />
-          <Property Name="CHIEUDAI" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="HIEU" Type="smallint" />
-          <Property Name="LOAIFILE" Type="nvarchar" MaxLength="20" />
-          <Property Name="IDHanhChinh" Type="nvarchar" MaxLength="10" />
-          <Property Name="MaHuyen" Type="nvarchar" MaxLength="10" />
-          <Property Name="Enabled" Type="smallint" />
-          <Property Name="SHAPE" Type="geometry" />
-          <Property Name="NGAYTHEMMOI" Type="datetime2" Precision="7" />
-        </EntityType>
         <EntityType Name="HANHCHINH">
           <Key>
             <PropertyRef Name="OBJECTID" />
           </Key>
           <Property Name="OBJECTID" Type="int" Nullable="false" />
-          <Property Name="IDHanhChinh" Type="nvarchar" MaxLength="10" />
           <Property Name="TenHanhChinh" Type="nvarchar" MaxLength="50" />
-          <Property Name="DienTich" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="TenHuyen" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDHanhChinh" Type="nvarchar" MaxLength="10" />
           <Property Name="MaHuyen" Type="nvarchar" MaxLength="10" />
-          <Property Name="TenQuan" Type="nvarchar" MaxLength="50" />
           <Property Name="SHAPE" Type="geometry" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ChoLonGIS.sde.HOSOVATTUSUCO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'VWAGIS.sde.HOSOVATTUSUCO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HOSOVATTUSUCO">
           <Key>
-            <PropertyRef Name="OBJECTID" />
-            <PropertyRef Name="IDSuCo" />
-            <PropertyRef Name="SoLuong" />
-            <PropertyRef Name="MaVatTu" />
+            <PropertyRef Name="RID" />
           </Key>
-          <Property Name="OBJECTID" Type="int" Nullable="false" />
-          <Property Name="IDSuCo" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="SoLuong" Type="numeric" Precision="38" Scale="8" Nullable="false" />
-          <Property Name="MaVatTu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoLuong" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="RID" Type="int" Nullable="false" />
+          <Property Name="IDSuCo" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaVatTu" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SUCO">
           <Key>
@@ -145,7 +34,6 @@ warning 6002: The table/view 'ChoLonGIS.sde.HOSOVATTUSUCO' does not have a prima
           <Property Name="OBJECTID" Type="int" Nullable="false" />
           <Property Name="GlobalID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IDSuCo" Type="nvarchar" MaxLength="20" />
-          <Property Name="TrangThai" Type="smallint" />
           <Property Name="NguoiPhanAnh" Type="nvarchar" MaxLength="255" />
           <Property Name="SDTPhanAnh" Type="nvarchar" MaxLength="15" />
           <Property Name="TGPhanAnh" Type="datetime2" Precision="7" />
@@ -167,32 +55,15 @@ warning 6002: The table/view 'ChoLonGIS.sde.HOSOVATTUSUCO' does not have a prima
           <Property Name="ApLuc" Type="numeric" Precision="38" Scale="8" />
           <Property Name="DoSauLungOng" Type="numeric" Precision="38" Scale="8" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+          <Property Name="created_user" Type="nvarchar" MaxLength="255" />
+          <Property Name="created_date" Type="datetime2" Precision="7" />
+          <Property Name="last_edited_user" Type="nvarchar(max)" />
+          <Property Name="last_edited_date" Type="datetime2" Precision="7" />
           <Property Name="SHAPE" Type="geometry" />
+          <Property Name="TrangThai" Type="smallint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ChoLonGIS.sde.TBKHACHHANGMATNUOC' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="TBKHACHHANGMATNUOC">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="int" Nullable="false" />
-          <Property Name="DBDONGHONUOC" Type="nvarchar" MaxLength="11" />
-          <Property Name="TENTHUEBAO" Type="nvarchar" MaxLength="100" />
-          <Property Name="SONHA" Type="nvarchar" MaxLength="100" />
-          <Property Name="MADUONG" Type="nvarchar" MaxLength="10" />
-          <Property Name="MAPHUONG" Type="nvarchar" MaxLength="8" />
-          <Property Name="MAQUAN" Type="nvarchar" MaxLength="5" />
-          <Property Name="CODONGHO" Type="smallint" />
-          <Property Name="SODIENTHOAI" Type="nvarchar" MaxLength="50" />
-          <Property Name="TENDMA" Type="nvarchar" MaxLength="20" />
-          <Property Name="TENDUONG" Type="nvarchar" MaxLength="100" />
-          <Property Name="NGAYCAPNHAT" Type="datetime2" Precision="7" />
-          <Property Name="OBJECTID_KH" Type="nvarchar" MaxLength="50" />
-          <Property Name="TuNgay" Type="datetime2" Precision="7" />
-          <Property Name="DenNgay" Type="datetime2" Precision="7" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'VWAGIS.sde.VATTU' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VATTU">
           <Key>
             <PropertyRef Name="OBJECTID" />
@@ -204,36 +75,15 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
           <Property Name="MaTS" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="GISModelStoreContainer">
-          <EntitySet Name="DMA" EntityType="Self.DMA" Schema="sde" store:Type="Tables" />
-          <EntitySet Name="DONGHOKHACHHANG" EntityType="Self.DONGHOKHACHHANG" Schema="sde" store:Type="Tables" />
           <EntitySet Name="HANHCHINH" EntityType="Self.HANHCHINH" Schema="sde" store:Type="Tables" />
           <EntitySet Name="SUCO" EntityType="Self.SUCO" Schema="sde" store:Type="Tables" />
           <EntitySet Name="HOSOVATTUSUCO" EntityType="Self.HOSOVATTUSUCO" store:Type="Tables" store:Schema="sde">
             <DefiningQuery>SELECT 
-    [HOSOVATTUSUCO].[OBJECTID] AS [OBJECTID], 
-    [HOSOVATTUSUCO].[IDSuCo] AS [IDSuCo], 
     [HOSOVATTUSUCO].[SoLuong] AS [SoLuong], 
+    [HOSOVATTUSUCO].[RID] AS [RID], 
+    [HOSOVATTUSUCO].[IDSuCo] AS [IDSuCo], 
     [HOSOVATTUSUCO].[MaVatTu] AS [MaVatTu]
     FROM [sde].[HOSOVATTUSUCO] AS [HOSOVATTUSUCO]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TBKHACHHANGMATNUOC" EntityType="Self.TBKHACHHANGMATNUOC" store:Type="Tables" store:Schema="sde">
-            <DefiningQuery>SELECT 
-    [TBKHACHHANGMATNUOC].[OBJECTID] AS [OBJECTID], 
-    [TBKHACHHANGMATNUOC].[DBDONGHONUOC] AS [DBDONGHONUOC], 
-    [TBKHACHHANGMATNUOC].[TENTHUEBAO] AS [TENTHUEBAO], 
-    [TBKHACHHANGMATNUOC].[SONHA] AS [SONHA], 
-    [TBKHACHHANGMATNUOC].[MADUONG] AS [MADUONG], 
-    [TBKHACHHANGMATNUOC].[MAPHUONG] AS [MAPHUONG], 
-    [TBKHACHHANGMATNUOC].[MAQUAN] AS [MAQUAN], 
-    [TBKHACHHANGMATNUOC].[CODONGHO] AS [CODONGHO], 
-    [TBKHACHHANGMATNUOC].[SODIENTHOAI] AS [SODIENTHOAI], 
-    [TBKHACHHANGMATNUOC].[TENDMA] AS [TENDMA], 
-    [TBKHACHHANGMATNUOC].[TENDUONG] AS [TENDUONG], 
-    [TBKHACHHANGMATNUOC].[NGAYCAPNHAT] AS [NGAYCAPNHAT], 
-    [TBKHACHHANGMATNUOC].[OBJECTID_KH] AS [OBJECTID_KH], 
-    [TBKHACHHANGMATNUOC].[TuNgay] AS [TuNgay], 
-    [TBKHACHHANGMATNUOC].[DenNgay] AS [DenNgay]
-    FROM [sde].[TBKHACHHANGMATNUOC] AS [TBKHACHHANGMATNUOC]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VATTU" EntityType="Self.VATTU" store:Type="Tables" store:Schema="sde">
             <DefiningQuery>SELECT 
@@ -251,173 +101,29 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
       <Schema Namespace="GISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="GISEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HOSOVATTUSUCOes" EntityType="GISModel.HOSOVATTUSUCO" />
-          <EntitySet Name="TBKHACHHANGMATNUOCs" EntityType="GISModel.TBKHACHHANGMATNUOC" />
           <EntitySet Name="HANHCHINHs" EntityType="GISModel.HANHCHINH" />
-          <EntitySet Name="DONGHOKHACHHANGs" EntityType="GISModel.DONGHOKHACHHANG" />
-          <EntitySet Name="DMAs" EntityType="GISModel.DMA" />
-          <EntitySet Name="VATTUs" EntityType="GISModel.VATTU" />
           <EntitySet Name="SUCOes" EntityType="GISModel.SUCO" />
+          <EntitySet Name="VATTUs" EntityType="GISModel.VATTU" />
         </EntityContainer>
         <EntityType Name="HOSOVATTUSUCO">
           <Key>
-            <PropertyRef Name="OBJECTID" />
-            <PropertyRef Name="IDSuCo" />
-            <PropertyRef Name="SoLuong" />
-            <PropertyRef Name="MaVatTu" />
+            <PropertyRef Name="RID" />
           </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="IDSuCo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuong" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
-          <Property Name="MaVatTu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TBKHACHHANGMATNUOC">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="DBDONGHONUOC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="TENTHUEBAO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SONHA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MADUONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="MAPHUONG" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="MAQUAN" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="CODONGHO" Type="Int16" />
-          <Property Name="SODIENTHOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TENDMA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TENDUONG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NGAYCAPNHAT" Type="DateTime" Precision="7" />
-          <Property Name="OBJECTID_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TuNgay" Type="DateTime" Precision="7" />
-          <Property Name="DenNgay" Type="DateTime" Precision="7" />
+          <Property Name="SoLuong" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="RID" Type="Int32" Nullable="false" />
+          <Property Name="IDSuCo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaVatTu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HANHCHINH">
           <Key>
             <PropertyRef Name="OBJECTID" />
           </Key>
           <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="IDHanhChinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="TenHanhChinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DienTich" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="MaHuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TenQuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SHAPE" Type="Geometry" />
-        </EntityType>
-        <EntityType Name="DONGHOKHACHHANG">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="TIEUCHUAN" Type="Int16" />
-          <Property Name="NAMSANXUAT" Type="Int32" />
-          <Property Name="SOTHANDONGHO" Type="Int32" />
-          <Property Name="VITRILAPDAT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TINHTRANG" Type="Int16" />
-          <Property Name="APLUC" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="DONVITHICONG" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DONVITHIETKE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DBDONGHONUOC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="TENTHUEBAO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SONHA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MADUONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="MAPHUONG" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="MAQUAN" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="GHICHU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CODONGHO" Type="Int16" />
-          <Property Name="SOHOPDONG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MUCDICHSUDUNG" Type="Int16" />
-          <Property Name="SONGUOISUDUNG" Type="Int32" />
-          <Property Name="MASOCHI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SODIENTHOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SONHACU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MASOCHIMATSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CHIKHOAGOC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SOCNKIEMDINH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TINHTRANGQLDHN" Type="Int16" />
-          <Property Name="TINHTRANGTHUNGANDHN" Type="Int16" />
-          <Property Name="TINHTRANGTUBODHN" Type="Int16" />
-          <Property Name="SOHOKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TENTHUEBAOCU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NGAYBAMCHI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LYDOBAMCHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SOLANTHAY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TRANGTHAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CAPCHINHXAC" Type="Int16" />
-          <Property Name="NGAYLAPDAT" Type="DateTime" Precision="7" />
-          <Property Name="NGAYKIEMDINH" Type="DateTime" Precision="7" />
-          <Property Name="NHAKIEMDINH" Type="Int16" />
-          <Property Name="DINHMUCSUDUNG" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="NGAYTHAYMOI" Type="DateTime" Precision="7" />
-          <Property Name="THOIHANSUDUNG" Type="Int32" />
-          <Property Name="LOAIDONGHO" Type="Int16" />
-          <Property Name="HIEUDONGHO" Type="Int16" />
-          <Property Name="NGUOICAPNHAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NGAYCAPNHAT" Type="DateTime" Precision="7" />
-          <Property Name="MADMA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MADMZ" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MAVAN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TINHTRANGVAN" Type="Int16" />
-          <Property Name="COCHIAKHOA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="GHICHUVANKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="KHUPHO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SOHOSO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LOAIVAN" Type="Int16" />
-          <Property Name="TENDUONG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LOAIKHACHHANG" Type="Int16" />
-          <Property Name="LOAIMATSO" Type="Int16" />
-          <Property Name="GIABIEU" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="NGAYDOCSO" Type="DateTime" Precision="7" />
-          <Property Name="MALOTRINH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CHUKYDOCSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SOCHUNGMINH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TINHTRANGKYTHUAT" Type="Int16" />
-          <Property Name="VITRI" Type="Int16" />
-          <Property Name="ThongTinSuaChua" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="GHICHUTHONGTIN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="IDTHUA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TINHTRANGDH" Type="Int16" />
-          <Property Name="CSTTThangGanNhat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="NHANVIENTHIETKE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NHANVIENBAMCHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TINHTRANGVIPHAM" Type="Int16" />
-          <Property Name="TTRoRiTrenDHN" Type="Int16" />
-          <Property Name="DacDiemRoRi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TinhTrangRoRi" Type="Int16" />
-          <Property Name="SLTieuThuTB" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="TINHTRANGSUDUNG" Type="Int16" />
-          <Property Name="DOSAU" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="COONGNGANH" Type="Int16" />
-          <Property Name="VATLIEU" Type="Int16" />
-          <Property Name="CHIEUDAI" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="HIEU" Type="Int16" />
-          <Property Name="LOAIFILE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TenHuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDHanhChinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="MaHuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Enabled" Type="Int16" />
           <Property Name="SHAPE" Type="Geometry" />
-          <Property Name="NGAYTHEMMOI" Type="DateTime" Precision="7" />
-        </EntityType>
-        <EntityType Name="DMA">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="MADMA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TENDMA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SHAPE" Type="Geometry" />
-          <Property Name="TiLeThatThoat" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="Nam" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="Ky" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VATTU">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="MaVatTu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenVatTu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DonViTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaTS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SUCO">
           <Key>
@@ -426,7 +132,6 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
           <Property Name="OBJECTID" Type="Int32" Nullable="false" />
           <Property Name="GlobalID" Type="Guid" Nullable="false" />
           <Property Name="IDSuCo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TrangThai" Type="Int16" />
           <Property Name="NguoiPhanAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SDTPhanAnh" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="TGPhanAnh" Type="DateTime" Precision="7" />
@@ -448,7 +153,22 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
           <Property Name="ApLuc" Type="Decimal" Precision="38" Scale="8" />
           <Property Name="DoSauLungOng" Type="Decimal" Precision="38" Scale="8" />
           <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="created_user" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="7" />
+          <Property Name="last_edited_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="last_edited_date" Type="DateTime" Precision="7" />
           <Property Name="SHAPE" Type="Geometry" />
+          <Property Name="TrangThai" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VATTU">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="MaVatTu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenVatTu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonViTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaTS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -460,30 +180,9 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
             <EntityTypeMapping TypeName="GISModel.HOSOVATTUSUCO">
               <MappingFragment StoreEntitySet="HOSOVATTUSUCO">
                 <ScalarProperty Name="MaVatTu" ColumnName="MaVatTu" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="IDSuCo" ColumnName="IDSuCo" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBKHACHHANGMATNUOCs">
-            <EntityTypeMapping TypeName="GISModel.TBKHACHHANGMATNUOC">
-              <MappingFragment StoreEntitySet="TBKHACHHANGMATNUOC">
-                <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
-                <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
-                <ScalarProperty Name="OBJECTID_KH" ColumnName="OBJECTID_KH" />
-                <ScalarProperty Name="NGAYCAPNHAT" ColumnName="NGAYCAPNHAT" />
-                <ScalarProperty Name="TENDUONG" ColumnName="TENDUONG" />
-                <ScalarProperty Name="TENDMA" ColumnName="TENDMA" />
-                <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
-                <ScalarProperty Name="CODONGHO" ColumnName="CODONGHO" />
-                <ScalarProperty Name="MAQUAN" ColumnName="MAQUAN" />
-                <ScalarProperty Name="MAPHUONG" ColumnName="MAPHUONG" />
-                <ScalarProperty Name="MADUONG" ColumnName="MADUONG" />
-                <ScalarProperty Name="SONHA" ColumnName="SONHA" />
-                <ScalarProperty Name="TENTHUEBAO" ColumnName="TENTHUEBAO" />
-                <ScalarProperty Name="DBDONGHONUOC" ColumnName="DBDONGHONUOC" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -491,131 +190,10 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
             <EntityTypeMapping TypeName="GISModel.HANHCHINH">
               <MappingFragment StoreEntitySet="HANHCHINH">
                 <ScalarProperty Name="SHAPE" ColumnName="SHAPE" />
-                <ScalarProperty Name="TenQuan" ColumnName="TenQuan" />
                 <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
-                <ScalarProperty Name="DienTich" ColumnName="DienTich" />
+                <ScalarProperty Name="IDHanhChinh" ColumnName="IDHanhChinh" />
+                <ScalarProperty Name="TenHuyen" ColumnName="TenHuyen" />
                 <ScalarProperty Name="TenHanhChinh" ColumnName="TenHanhChinh" />
-                <ScalarProperty Name="IDHanhChinh" ColumnName="IDHanhChinh" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DONGHOKHACHHANGs">
-            <EntityTypeMapping TypeName="GISModel.DONGHOKHACHHANG">
-              <MappingFragment StoreEntitySet="DONGHOKHACHHANG">
-                <ScalarProperty Name="NGAYTHEMMOI" ColumnName="NGAYTHEMMOI" />
-                <ScalarProperty Name="SHAPE" ColumnName="SHAPE" />
-                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
-                <ScalarProperty Name="MaHuyen" ColumnName="MaHuyen" />
-                <ScalarProperty Name="IDHanhChinh" ColumnName="IDHanhChinh" />
-                <ScalarProperty Name="LOAIFILE" ColumnName="LOAIFILE" />
-                <ScalarProperty Name="HIEU" ColumnName="HIEU" />
-                <ScalarProperty Name="CHIEUDAI" ColumnName="CHIEUDAI" />
-                <ScalarProperty Name="VATLIEU" ColumnName="VATLIEU" />
-                <ScalarProperty Name="COONGNGANH" ColumnName="COONGNGANH" />
-                <ScalarProperty Name="DOSAU" ColumnName="DOSAU" />
-                <ScalarProperty Name="TINHTRANGSUDUNG" ColumnName="TINHTRANGSUDUNG" />
-                <ScalarProperty Name="SLTieuThuTB" ColumnName="SLTieuThuTB" />
-                <ScalarProperty Name="TinhTrangRoRi" ColumnName="TinhTrangRoRi" />
-                <ScalarProperty Name="DacDiemRoRi" ColumnName="DacDiemRoRi" />
-                <ScalarProperty Name="TTRoRiTrenDHN" ColumnName="TTRoRiTrenDHN" />
-                <ScalarProperty Name="TINHTRANGVIPHAM" ColumnName="TINHTRANGVIPHAM" />
-                <ScalarProperty Name="NHANVIENBAMCHI" ColumnName="NHANVIENBAMCHI" />
-                <ScalarProperty Name="NHANVIENTHIETKE" ColumnName="NHANVIENTHIETKE" />
-                <ScalarProperty Name="CSTTThangGanNhat" ColumnName="CSTTThangGanNhat" />
-                <ScalarProperty Name="TINHTRANGDH" ColumnName="TINHTRANGDH" />
-                <ScalarProperty Name="IDTHUA" ColumnName="IDTHUA" />
-                <ScalarProperty Name="GHICHUTHONGTIN" ColumnName="GHICHUTHONGTIN" />
-                <ScalarProperty Name="ThongTinSuaChua" ColumnName="ThongTinSuaChua" />
-                <ScalarProperty Name="VITRI" ColumnName="VITRI" />
-                <ScalarProperty Name="TINHTRANGKYTHUAT" ColumnName="TINHTRANGKYTHUAT" />
-                <ScalarProperty Name="SOCHUNGMINH" ColumnName="SOCHUNGMINH" />
-                <ScalarProperty Name="CHUKYDOCSO" ColumnName="CHUKYDOCSO" />
-                <ScalarProperty Name="MALOTRINH" ColumnName="MALOTRINH" />
-                <ScalarProperty Name="NGAYDOCSO" ColumnName="NGAYDOCSO" />
-                <ScalarProperty Name="GIABIEU" ColumnName="GIABIEU" />
-                <ScalarProperty Name="LOAIMATSO" ColumnName="LOAIMATSO" />
-                <ScalarProperty Name="LOAIKHACHHANG" ColumnName="LOAIKHACHHANG" />
-                <ScalarProperty Name="TENDUONG" ColumnName="TENDUONG" />
-                <ScalarProperty Name="LOAIVAN" ColumnName="LOAIVAN" />
-                <ScalarProperty Name="SOHOSO" ColumnName="SOHOSO" />
-                <ScalarProperty Name="KHUPHO" ColumnName="KHUPHO" />
-                <ScalarProperty Name="GHICHUVANKH" ColumnName="GHICHUVANKH" />
-                <ScalarProperty Name="COCHIAKHOA" ColumnName="COCHIAKHOA" />
-                <ScalarProperty Name="TINHTRANGVAN" ColumnName="TINHTRANGVAN" />
-                <ScalarProperty Name="MAVAN" ColumnName="MAVAN" />
-                <ScalarProperty Name="MADMZ" ColumnName="MADMZ" />
-                <ScalarProperty Name="MADMA" ColumnName="MADMA" />
-                <ScalarProperty Name="NGAYCAPNHAT" ColumnName="NGAYCAPNHAT" />
-                <ScalarProperty Name="NGUOICAPNHAT" ColumnName="NGUOICAPNHAT" />
-                <ScalarProperty Name="HIEUDONGHO" ColumnName="HIEUDONGHO" />
-                <ScalarProperty Name="LOAIDONGHO" ColumnName="LOAIDONGHO" />
-                <ScalarProperty Name="THOIHANSUDUNG" ColumnName="THOIHANSUDUNG" />
-                <ScalarProperty Name="NGAYTHAYMOI" ColumnName="NGAYTHAYMOI" />
-                <ScalarProperty Name="DINHMUCSUDUNG" ColumnName="DINHMUCSUDUNG" />
-                <ScalarProperty Name="NHAKIEMDINH" ColumnName="NHAKIEMDINH" />
-                <ScalarProperty Name="NGAYKIEMDINH" ColumnName="NGAYKIEMDINH" />
-                <ScalarProperty Name="NGAYLAPDAT" ColumnName="NGAYLAPDAT" />
-                <ScalarProperty Name="CAPCHINHXAC" ColumnName="CAPCHINHXAC" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-                <ScalarProperty Name="SOLANTHAY" ColumnName="SOLANTHAY" />
-                <ScalarProperty Name="LYDOBAMCHI" ColumnName="LYDOBAMCHI" />
-                <ScalarProperty Name="NGAYBAMCHI" ColumnName="NGAYBAMCHI" />
-                <ScalarProperty Name="TENTHUEBAOCU" ColumnName="TENTHUEBAOCU" />
-                <ScalarProperty Name="SOHOKHAU" ColumnName="SOHOKHAU" />
-                <ScalarProperty Name="TINHTRANGTUBODHN" ColumnName="TINHTRANGTUBODHN" />
-                <ScalarProperty Name="TINHTRANGTHUNGANDHN" ColumnName="TINHTRANGTHUNGANDHN" />
-                <ScalarProperty Name="TINHTRANGQLDHN" ColumnName="TINHTRANGQLDHN" />
-                <ScalarProperty Name="SOCNKIEMDINH" ColumnName="SOCNKIEMDINH" />
-                <ScalarProperty Name="CHIKHOAGOC" ColumnName="CHIKHOAGOC" />
-                <ScalarProperty Name="MASOCHIMATSO" ColumnName="MASOCHIMATSO" />
-                <ScalarProperty Name="SONHACU" ColumnName="SONHACU" />
-                <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
-                <ScalarProperty Name="MASOCHI" ColumnName="MASOCHI" />
-                <ScalarProperty Name="SONGUOISUDUNG" ColumnName="SONGUOISUDUNG" />
-                <ScalarProperty Name="MUCDICHSUDUNG" ColumnName="MUCDICHSUDUNG" />
-                <ScalarProperty Name="SOHOPDONG" ColumnName="SOHOPDONG" />
-                <ScalarProperty Name="CODONGHO" ColumnName="CODONGHO" />
-                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-                <ScalarProperty Name="MAQUAN" ColumnName="MAQUAN" />
-                <ScalarProperty Name="MAPHUONG" ColumnName="MAPHUONG" />
-                <ScalarProperty Name="MADUONG" ColumnName="MADUONG" />
-                <ScalarProperty Name="SONHA" ColumnName="SONHA" />
-                <ScalarProperty Name="TENTHUEBAO" ColumnName="TENTHUEBAO" />
-                <ScalarProperty Name="DBDONGHONUOC" ColumnName="DBDONGHONUOC" />
-                <ScalarProperty Name="DONVITHIETKE" ColumnName="DONVITHIETKE" />
-                <ScalarProperty Name="DONVITHICONG" ColumnName="DONVITHICONG" />
-                <ScalarProperty Name="APLUC" ColumnName="APLUC" />
-                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
-                <ScalarProperty Name="VITRILAPDAT" ColumnName="VITRILAPDAT" />
-                <ScalarProperty Name="SOTHANDONGHO" ColumnName="SOTHANDONGHO" />
-                <ScalarProperty Name="NAMSANXUAT" ColumnName="NAMSANXUAT" />
-                <ScalarProperty Name="TIEUCHUAN" ColumnName="TIEUCHUAN" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DMAs">
-            <EntityTypeMapping TypeName="GISModel.DMA">
-              <MappingFragment StoreEntitySet="DMA">
-                <ScalarProperty Name="Ky" ColumnName="Ky" />
-                <ScalarProperty Name="Nam" ColumnName="Nam" />
-                <ScalarProperty Name="TiLeThatThoat" ColumnName="TiLeThatThoat" />
-                <ScalarProperty Name="SHAPE" ColumnName="SHAPE" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TENDMA" ColumnName="TENDMA" />
-                <ScalarProperty Name="MADMA" ColumnName="MADMA" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VATTUs">
-            <EntityTypeMapping TypeName="GISModel.VATTU">
-              <MappingFragment StoreEntitySet="VATTU">
-                <ScalarProperty Name="MaTS" ColumnName="MaTS" />
-                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
-                <ScalarProperty Name="TenVatTu" ColumnName="TenVatTu" />
-                <ScalarProperty Name="MaVatTu" ColumnName="MaVatTu" />
                 <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -623,7 +201,12 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
           <EntitySetMapping Name="SUCOes">
             <EntityTypeMapping TypeName="GISModel.SUCO">
               <MappingFragment StoreEntitySet="SUCO">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="SHAPE" ColumnName="SHAPE" />
+                <ScalarProperty Name="last_edited_date" ColumnName="last_edited_date" />
+                <ScalarProperty Name="last_edited_user" ColumnName="last_edited_user" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_user" ColumnName="created_user" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="DoSauLungOng" ColumnName="DoSauLungOng" />
                 <ScalarProperty Name="ApLuc" ColumnName="ApLuc" />
@@ -645,9 +228,19 @@ warning 6002: The table/view 'ChoLonGIS.sde.VATTU' does not have a primary key d
                 <ScalarProperty Name="TGPhanAnh" ColumnName="TGPhanAnh" />
                 <ScalarProperty Name="SDTPhanAnh" ColumnName="SDTPhanAnh" />
                 <ScalarProperty Name="NguoiPhanAnh" ColumnName="NguoiPhanAnh" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="IDSuCo" ColumnName="IDSuCo" />
                 <ScalarProperty Name="GlobalID" ColumnName="GlobalID" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VATTUs">
+            <EntityTypeMapping TypeName="GISModel.VATTU">
+              <MappingFragment StoreEntitySet="VATTU">
+                <ScalarProperty Name="MaTS" ColumnName="MaTS" />
+                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+                <ScalarProperty Name="TenVatTu" ColumnName="TenVatTu" />
+                <ScalarProperty Name="MaVatTu" ColumnName="MaVatTu" />
                 <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
               </MappingFragment>
             </EntityTypeMapping>

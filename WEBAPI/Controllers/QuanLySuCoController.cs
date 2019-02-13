@@ -19,14 +19,15 @@ using static WebAPI.DataProvider.Models.SuCoModel;
 namespace WebAPI.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/QuanLySuCo")]
+    [RoutePrefix("QuanLySuCo")]
     public class QuanLySuCoController : ApiController
     {
         private SuCoDB context = new SuCoDB();
 
-        [Route("GenerateIDSuCo/{doiQuanLy}")]
+        [Route("LayMaSuCo/{doiQuanLy}")]
         [HttpGet]
-        public HttpResponseMessage GenerateIDSuCo(string doiQuanLy)
+        [AllowAnonymous]
+        public HttpResponseMessage LayMaSuCo(string doiQuanLy)
         {
             try
             {
@@ -89,7 +90,7 @@ namespace WebAPI.Controllers
                     if (hcModel != null)
                     {
                         phieuCongTac.Phuong = String.IsNullOrEmpty(hcModel.TenHanhChinh)?"":hcModel.TenHanhChinh.Replace("Phường",String.Empty);
-                        phieuCongTac.Quan = String.IsNullOrEmpty(hcModel.TenQuan)?"":hcModel.TenQuan.Replace("Quận",String.Empty);
+                        phieuCongTac.Quan = String.IsNullOrEmpty(hcModel.TenHuyen)?"":hcModel.TenHuyen.Replace("Quận",String.Empty);
 
                     }
                 }
@@ -98,12 +99,12 @@ namespace WebAPI.Controllers
                 // cập nhật tên đội trưởng
                 if (phieuCongTac.DoiTuong.Equals("QLCN1"))
                 {
-                    phieuCongTac.DoiTruong = "Trần Hữu Tế Nhị";
+                    phieuCongTac.DoiTruong = "A";
                     phieuCongTac.DoiTuong = "P. QUẢN LÝ CẤP NƯỚC 1";
                 }
                 else if (phieuCongTac.DoiTuong.Equals("QLCN2"))
                 {
-                    phieuCongTac.DoiTruong = "Nguyễn Ngọc Thanh";
+                    phieuCongTac.DoiTruong = "B";
                     phieuCongTac.DoiTuong = "P. QUẢN LÝ CẤP NƯỚC 2";
                 }
 

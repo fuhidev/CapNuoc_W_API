@@ -7,7 +7,7 @@ using WebAPI.DataProvider.EF;
 
 namespace WebAPI.DataProvider.Models
 {
-    public class TBKhachHangMatNuoc:TBKHACHHANGMATNUOC
+    public class TBKhachHangMatNuoc
     {
     }
 }
